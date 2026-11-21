@@ -1,0 +1,29 @@
+PCB Vision AI — Run commands (Raspberry Pi)
+
+Settings in this package:
+  CONV_SPEED = 95
+  SEG_PULSE_SEC = 6.0
+  model.eim = included
+
+1) Backend
+cd ~/pcb-vision-ai/backend
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+chmod +x model.eim
+uvicorn main:app --host 0.0.0.0 --port 8000
+
+2) Frontend (other terminal)
+cd ~/pcb-vision-ai/frontend
+npm install
+npm run dev -- --host 0.0.0.0
+
+3) Browser
+http://localhost:5173
+or http://PI_IP:5173
+Live Inspection → Start live detection
+
+Optional overrides:
+export CONV_SPEED=95
+export SEG_PULSE_SEC=6
+export PAUSE_SEC=5
